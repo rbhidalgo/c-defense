@@ -1,0 +1,23 @@
+---
+export interface Props {
+	image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="hero">
+ <img src={image} alt="" class="fadeIn">
+ <!-- <h2 class="hero__overlay">TEST</h2> -->
+</section>
+
+<style>
+	.hero {
+  display: grid;
+  grid-template-areas: "overlay";
+  margin-bottom: 50px;
+ }
+ .hero__overlay,img {
+    grid-area: overlay;
+    }
+</style>

@@ -1,0 +1,158 @@
+---
+/** Main menu items */
+const textLinks: { label: string; href: string }[] = [
+	{ label: 'HOME', href: '/' },
+	{ label: 'SERVICES', href: '#' },
+	{ label: 'GUARDS', href: '#' },
+	{ label: 'CONTACT', href: '/contact/' },
+];
+
+---
+<section class="header">
+	<div class="header__top"><a href="/"><img src="/img/logo-cda.png" alt="confidentaial defense agency logo" class="fadeIn"></a></div>
+	<div class="header__nav fadeIn">
+		<menu-button>
+			<template>
+				<button class="menu-button" aria-expanded="false">
+					<span class="sr-only">MENU</span>
+				</button>
+			</template>
+		</menu-button>
+		<nav id="menu-content">
+			<ul class="nav-items">
+				{
+					textLinks.map(({ label, href }) => (
+						<li>
+							<a
+								aria-current={Astro.url.pathname === href}
+								class:list={[
+									'link',
+									{
+										active:
+											Astro.url.pathname === href ||
+											(href !== '/' && Astro.url.pathname.startsWith(href)),
+									},
+								]}
+								href={href}
+							>
+								{label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+</section>
+
+
+<script>
+	class MenuButton extends HTMLElement {
+		constructor() {
+			super();
+
+			// Inject menu toggle button when JS runs.
+			this.appendChild(this.querySelector('template')!.content.cloneNode(true));
+			const btn = this.querySelector('button')!;
+
+			// Hide menu (shown by default to support no-JS browsers).
+			const menu = document.getElementById('menu-content')!;
+			menu.hidden = true;
+
+			/** Set whether the menu is currently expanded or collapsed. */
+			const setExpanded = (expand: boolean) => {
+				btn.setAttribute('aria-expanded', expand ? 'true' : 'false');
+				menu.hidden = !expand;
+			};
+
+			// Toggle menu visibility when the menu button is clicked.
+			btn.addEventListener('click', () => setExpanded(menu.hidden));
+
+			// Hide menu button for large screens.
+			const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
+				setExpanded(e.matches);
+				btn.hidden = e.matches;
+			};
+			const mediaQueries = window.matchMedia('(min-width: 768px)');
+			handleViewports(mediaQueries);
+			mediaQueries.addEventListener('change', handleViewports);
+		}
+	}
+	customElements.define('menu-button', MenuButton);
+</script>
+
+<style>
+	.menu-button {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		font-family: 'agencyfb-regular-extended';
+		border: 0;
+		padding: 0.5rem;
+		font-size: 16px;
+		color: var(--white);
+		background: var(--primary);
+		cursor: pointer;
+	}
+
+	.menu-button[aria-expanded='true'] {
+		color: #000;
+		background: #fff;
+	}
+
+	.menu-button[hidden] {
+		display: none;
+	}
+
+	.header {
+    padding-top: 50px;
+  }
+  .header .header__top {
+    max-width: 800px;
+    width: 75%;
+    padding-bottom: 25px;
+				padding-left: 100px;
+  }
+	.header__nav nav ul {
+    background: var(--primary);
+    color: var(--white);
+    font-family: 'agencyfb-regular-extended';
+    display: flex;
+    gap: 25px;
+    justify-content: space-evenly;
+    padding: 12.5px 100px;
+	}
+  .header__nav nav ul li a{
+    color: var(--white);
+    text-decoration: none;
+    transition: all .6s ease;
+	}
+  .header__nav nav ul li a:hover{
+    color: #b7b7b7;
+	}
+	.link.active {
+		color: #b7b7b7;
+		padding-bottom: 2px;
+  border-bottom: 1px solid;
+	}
+	@media (max-width:1280px) {
+    .header__nav nav ul {
+      padding: 10px 50px;
+    }
+				.header .header__top {
+					padding-left: 50px;
+				}
+  }
+  @media (max-width:768px) {
+    .header__nav nav ul {
+					flex-direction: column;
+					align-items: center;
+     padding: 25px;
+    }
+				.header .header__top {
+					padding-left: 25px;
+					margin-left: auto;
+					margin-right: auto;
+				}
+  }
+</style>

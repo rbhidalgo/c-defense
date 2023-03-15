@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Hero from '../components/Hero.astro'
+---
+
+<Layout title='Contact Us' description='Contact Us Today!'>
+	<main>
+		<Hero image='/img/hero.jpg' />
+		<section class='wrapped'>
+			<h2 class='heading fadeIn'>CONTACT US</h2>
+			<div class='form fadeIn'>
+				<form name='contact-us' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
+					<div class='w-50'>
+						<label for='firstName'>First Name*</label>
+						<input id='firstName' type='text' name='First Name' required />
+					</div>
+					<div class='w-50'>
+						<label for='lastName'>Last Name*</label>
+						<input id='lastName' type='text' name='Last Name' required />
+					</div>
+					<div class='w-50'>
+						<label for='email'>Email*</label>
+						<input id='email' type='email' name='email' required />
+					</div>
+					<div class='w-50'>
+						<label for='phone'>Phone*</label>
+						<input id='phone' type='tel' placeholder='Phone' name='Phone' required />
+					</div>
+					<div class='w-100'>
+						<label for='message'>Message*</label>
+						<textarea id='message' name='Message' rows='10' required></textarea>
+					</div>
+					<input type='hidden' name='form-name' value='contact-us' />
+					<button type='submit'>Submit</button>
+				</form>
+			</div>
+		</section>
+	</main>
+</Layout>
+<style>
+	.heading {
+		margin-bottom: 50px;
+    padding-left: 100px;
+	}
+	.form {
+		margin-bottom: 50px;
+		background: var(--accent);
+		padding: 50px;
+		width: 65%;
+		margin-left: auto;
+	}
+	form {
+		display: flex;
+		gap: 25px;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+		max-width: 1100px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+	input {
+		font-family: 'montserrat';
+		padding: 8px 10px;
+		margin: 5px;
+		border-width: 0;
+		font-size: 16px;
+		min-height: 50px;
+		width: 100%;
+	}
+	.w-50 {
+		width: calc(50% - 25px);
+	}
+	.w-100 {
+		width: 100%;
+	}
+	.w-100 {
+		display: flex;
+		flex-direction: column;
+	}
+	.w-100 label {
+		padding: 0;
+		margin-bottom: 5px;
+	}
+	button {
+		/* background-color: $color-secondary; */
+		/* color: $color-primary; */
+		text-transform: uppercase;
+		padding: 8px 24px;
+		margin: 10px;
+		min-height: 50px;
+		font-weight: 800;
+		border-width: 0;
+		font-size: 16px;
+		cursor: pointer;
+		font-family: 'montserrat';
+	}
+	textarea {
+		font-family: 'montserrat';
+		width: 100%;
+		padding: 8px 10px;
+		border-width: 0;
+		font-size: 16px;
+	}
+	label {
+		padding: 5px 5px;
+	}
+	@media (max-width: 768px) {
+    .heading {
+      padding-left: 25px;
+    }
+    .form {
+      width: calc(100% - 25px);
+    }
+		.w-50 {
+			width: 100%;
+		}
+	}
+</style>

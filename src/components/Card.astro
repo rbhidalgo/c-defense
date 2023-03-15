@@ -1,0 +1,43 @@
+---
+export interface Props {
+	title: string;
+	body: Array<string>;
+}
+
+const { title, body } = Astro.props;
+---
+
+<li class="card">
+		<h2 class="heading-sm">
+			{title}
+		</h2>
+		<p>
+			{body.map((item) => (
+				<p>{item}</p>
+			))}
+		</p>
+</li>
+<hr>
+<style>
+	.card {
+		flex: 1;
+		list-style: none;
+		padding: 0.25rem;
+	}
+	hr {
+		border-color: #595c65;
+		border-width: 2px;
+		border-style: solid;
+	}
+	hr:last-child {
+		display: none;
+	}
+	@media (max-width:1280px) {
+		.card {
+			flex-basis: 100%;
+		}
+		hr {
+			width: 100%;
+		}
+	}
+</style>

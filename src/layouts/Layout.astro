@@ -1,0 +1,143 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+}
+
+import Nav from '../components/Nav.astro';
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <meta name="description" property="og:description" content={description} />
+	</head>
+	<body>
+    <Nav />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	
+  @font-face {
+    font-family: 'agencyfb-regular-extended';
+    src: url('/fonts/agencyfb-regularextended.woff2') format('woff2'),
+        url('/fonts/agencyfb-regularextended.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+	}
+	@font-face {
+    font-family: 'agencyfb-boldextended';
+    src: url('/fonts/agencyfb-boldextended.woff2') format('woff2'),
+				url('/fonts/agencyfb-boldextended.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+	}
+	@font-face {
+    font-family: 'montserrat';
+    src: url('/fonts/montserrat-bold.woff2') format('woff2'),
+            url('/fonts/montserrat-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+	}
+	@font-face {
+    font-family: 'montserrat';
+    src: url('/fonts/montserrat-regular.woff2') format('woff2'),
+            url('/fonts/montserrat-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+	}
+	:root {
+		--font-heading: 'agencyfb-boldextended';
+		--primary: #29438d;
+    --accent: #313339;
+    --white: #ffffff;
+	}
+	html {
+		font-family: 'montserrat';
+    font-weight: normal;
+		background-color: #000;
+    color: #959595;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 16px;
+	}
+  *, *:before, *:after {
+  box-sizing: inherit;
+  }
+	body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  main {
+		margin: auto;
+		max-width: 3200px;
+	}
+  .wrapped {
+    max-width: 2560px;
+		margin-left: auto;
+		margin-right: auto;
+  }
+  .heading {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 36px;
+    font-size: clamp(20px, 3vw, 36px);
+  }
+  .heading-sm {
+    font-family: var(--font-heading);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 36px;
+    font-size: clamp(18px, 2vw, 24px);
+  }
+  p, h2 {
+    margin-bottom: 10px;
+  }
+  p {
+    line-height: 1.5;
+  }
+  .fadeIn {
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  .show {
+    opacity: 1;
+  }
+</style>
+<script>
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      const currentIndex = Array.from(hiddenEl).indexOf(entry.target)
+      console.log(currentIndex)
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        entry.target.style.transitionDelay = `${currentIndex * .1}s`;
+        observer.unobserve(entry.target)
+      }
+    })
+  })
+  const hiddenEl = document.querySelectorAll('.fadeIn');
+  hiddenEl.forEach((el) => observer.observe(el));
+  </script>

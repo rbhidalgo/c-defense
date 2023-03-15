@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Confidentail Defense Agency - Our Shield Your Safeguard" description="Confidentail Defense Agency">
+	<main>
+		<Hero image="/img/hero.jpg" />
+		<section class="wrapped">
+			<div class="container-flex">
+        <div class="flex-35 fadeIn">
+          <h2 class="heading">ABOUT US</h2>
+          <p>For the past 16 years Confidential Defense Agency has been providing the finest caliber of Body Guard Services to our clients in Los Angeles and surrounding areas. Our personal Protection and Celebrity Protection Specialists have maintained a flawless record of safe and secure protection for some of the most renowned entertainers and high-profile clients. We also offer high-profile Estates Security and consulting services. Our bodyguards are all off duty Law Enforcement Officers and/or US Veterans.</p>
+          <p><strong>We hope to be of service to you, your family and colleagues.</strong></p>
+        </div>
+        <div class="flex-65 fadeIn">
+          <h2 class="heading">SERVICES</h2>
+          <div class="card__container">
+            <ul role="list" class="card__wrapper">
+              <Card
+                title="BODY GUARD"
+                body={["Our Body Guards consists of tactically trained, combat experienced law enforcement and US Veterans. Operatives who can protect you against threats while integrating seamlessly into your regular routine."]}
+              />
+              <Card
+                title="ESTATE SERVICES"
+                body={["Estate security services can include patrolling of grounds, screening and greeting visitors, monitoring surveillance systems, as well as coordination of other estate services.","Estate security can be combined with our other services or offered as a standalone option."]}
+              />
+              <Card
+                title="CELEBRITY PROTECTION"
+                body={["As a celebrity you’re the center of attention even when you don’t want to be.", "Whether you’re high profile, YouTube famous or somewhere in between we’ll make sure you’re not only safe but comfortable."]}
+              />
+            </ul>
+          </div>
+        </div>
+      </div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+  .container-flex {
+    padding-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-bottom: 50px;
+  }
+  .flex-35 {
+    flex-basis: calc(35% - 25px);
+  }
+  .flex-65 {
+    flex-basis: calc(65% - 25px);
+  }
+  .card__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--accent);
+    gap: 25px;
+    padding: 25px;
+  }
+  @media (max-width:1280px) {
+    .container-flex {
+      padding-left: 50px;
+    }
+  }
+  @media (max-width:768px) {
+    .container-flex {
+      padding-left: 25px;
+      margin-bottom: 25px;
+    }
+  }
+  @media (max-width:600px) {
+  .flex-35 {
+    flex-basis: 100%;
+  }
+  .flex-65 {
+    flex-basis: 100%;
+  }
+  }
+</style>
