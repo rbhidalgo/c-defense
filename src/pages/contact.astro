@@ -15,9 +15,7 @@ import Hero from '../components/Hero.astro'
 						<select class="min-arrow" name="reason" id="reason" form="contact-us" required>
               <option value="" selected></option>
               <option value="New Service Inquiries">New Service Inquiries</option>
-              <option value="Media/Press Inquiries">Media/Press Inquiries</option>
               <option value="Recruitment/Employment">Recruitment/Employment</option>
-              <option value="Verification of Employment/Income">Verification of Employment/Income</option>
               <option value="Other">Other</option>
             </select>
 					</div>
@@ -26,16 +24,9 @@ import Hero from '../components/Hero.astro'
               <select class="min-arrow" name="services" id="services" form="contact-us">
                 <option value="" selected></option>
                 <option value="Protection Services">Protection Services</option>
-                <option value="Threat Assessment Consultation">Threat Assessment Consultation</option>
-                <option value="Investigations">Investigations</option>
-                <option value="Privacy Consultation">Privacy Consultation</option>
-                <option value="MOSAIC">MOSAIC</option>
-                <option value="Physical and Technical Design Consultation">Physical and Technical Design Consultation</option>
-                <option value="Academy for Protectors">Academy for Protectors</option>
-                <option value="Active Shooter Prevention Training">Active Shooter Prevention Training</option>
-                <option value="Advanced Threat Assessment Academy">Advanced Threat Assessment Academy</option>
-                <option value="Customized Advanced Threat Assessment Training">Customized Advanced Threat Assessment Training</option>
-                <option value="Other Training">Other Training</option>
+                <option value="Transportation Services">Transportation Services</option>
+                <option value="Private Investigation & Security Consulting">Private Investigation & Security Consulting</option>
+                <option value="Tactical Film Advising">Tactical Film Advising</option>
                 <option value="Other">Other</option>
               </select>
           </div>
@@ -79,13 +70,12 @@ import Hero from '../components/Hero.astro'
 						<label for='hearOfUs' id="hearOfUs">How Did You Hear About Us?*</label>
 						<select class="min-arrow" name="hearOfUs" id="hearOfUsOptions" form="contact-us" required>
               <option value="" selected></option>
-              <option value="GDBA Speaker Event">GDBA Speaker Event</option>
-              <option value="News Article">News Article</option>
-              <option value="Tradeshow/Industry Event">Tradeshow/Industry Event</option>
-              <option value="Read a Gavin de Becker Book">Read a Gavin de Becker Book</option>
-              <option value="Social Media">Social Media</option>
+              <option value="CDA Speaker Event">CDA Speaker Event</option>
               <option value="Friend/Colleague Referred">Friend/Colleague Referred</option>
-              <option value="Former GDBA Employee Referred">Former GDBA Employee Referred</option>
+              <option value="Former CDA Employee Referred">Former CDA Employee Referred</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Tradeshow/Industry Event">Tradeshow/Industry Event</option>
             </select>
           </div>
           <div class='w-50'>
@@ -174,6 +164,8 @@ import Hero from '../components/Hero.astro'
 	}
 	label {
 		padding: 5px 5px;
+		font-family: var(--font-heading);
+		text-transform: uppercase;
 	}
 
 select.min-arrow {
