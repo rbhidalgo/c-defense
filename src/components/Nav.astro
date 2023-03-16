@@ -8,8 +8,8 @@ const textLinks: { label: string; href: string }[] = [
 ];
 
 ---
-<section class="header">
-	<div class="header__top"><a href="/"><img src="/img/logo-cda.png" alt="confidentaial defense agency logo" class="fadeIn"></a></div>
+<section class="header wrapped">
+	<div class="header__top"><a href="/"><img src="/img/logo.svg" alt="confidentaial defense agency logo" class="fadeIn"></a></div>
 	<div class="header__nav fadeIn">
 		<menu-button>
 			<template>
@@ -73,7 +73,7 @@ const textLinks: { label: string; href: string }[] = [
 				setExpanded(e.matches);
 				btn.hidden = e.matches;
 			};
-			const mediaQueries = window.matchMedia('(min-width: 768px)');
+			const mediaQueries = window.matchMedia('(min-width: 769px)');
 			handleViewports(mediaQueries);
 			mediaQueries.addEventListener('change', handleViewports);
 		}

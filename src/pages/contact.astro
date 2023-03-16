@@ -5,11 +5,40 @@ import Hero from '../components/Hero.astro'
 
 <Layout title='Contact Us' description='Contact Us Today!'>
 	<main>
-		<Hero image='/img/hero.jpg' />
+		<Hero image='/img/hero-contact.jpg' />
 		<section class='wrapped'>
-			<h2 class='heading fadeIn'>CONTACT US</h2>
+			<h2 class='heading fadeIn'>YOUR INFORMATION</h2>
 			<div class='form fadeIn'>
-				<form name='contact-us' method='POST' data-netlify='true' data-netlify-honeypot='bot-field'>
+				<form name='contact-us' method='POST' data-netlify='true' data-netlify-honeypot='bot-field' id='contact-us'>
+					<div class='w-50'>
+						<label for='reason' id="contact-reason">Contact Reason*</label>
+						<select class="min-arrow" name="reason" id="reason" form="contact-us" required>
+              <option value="" selected></option>
+              <option value="New Service Inquiries">New Service Inquiries</option>
+              <option value="Media/Press Inquiries">Media/Press Inquiries</option>
+              <option value="Recruitment/Employment">Recruitment/Employment</option>
+              <option value="Verification of Employment/Income">Verification of Employment/Income</option>
+              <option value="Other">Other</option>
+            </select>
+					</div>
+          <div class="w-50 new-service-list">
+              <label for='services'>Services Inquiry Type*</label>
+              <select class="min-arrow" name="services" id="services" form="contact-us">
+                <option value="" selected></option>
+                <option value="Protection Services">Protection Services</option>
+                <option value="Threat Assessment Consultation">Threat Assessment Consultation</option>
+                <option value="Investigations">Investigations</option>
+                <option value="Privacy Consultation">Privacy Consultation</option>
+                <option value="MOSAIC">MOSAIC</option>
+                <option value="Physical and Technical Design Consultation">Physical and Technical Design Consultation</option>
+                <option value="Academy for Protectors">Academy for Protectors</option>
+                <option value="Active Shooter Prevention Training">Active Shooter Prevention Training</option>
+                <option value="Advanced Threat Assessment Academy">Advanced Threat Assessment Academy</option>
+                <option value="Customized Advanced Threat Assessment Training">Customized Advanced Threat Assessment Training</option>
+                <option value="Other Training">Other Training</option>
+                <option value="Other">Other</option>
+              </select>
+          </div>
 					<div class='w-50'>
 						<label for='firstName'>First Name*</label>
 						<input id='firstName' type='text' name='First Name' required />
@@ -19,15 +48,52 @@ import Hero from '../components/Hero.astro'
 						<input id='lastName' type='text' name='Last Name' required />
 					</div>
 					<div class='w-50'>
-						<label for='email'>Email*</label>
+						<label for='title'>Title*</label>
+						<input id='title' type='text' name='Title' required />
+					</div>
+					<div class='w-50'>
+						<label for='organization'>Organization</label>
+						<input id='organization' type='text' name='Organization'/>
+					</div>
+					<div class='w-50'>
+						<label for='businessType'>Business Type</label>
+						<input id='businessType' type='text' name='Business Type'/>
+					</div>
+					<div class='w-50'>
+						<label for='address'>Address, City, State, Zip, Country</label>
+						<input id='address' type='text' name='Address, City, State, Zip, Country'/>
+					</div>
+					<div class='w-50'>
+            <label for='email'>Email Address*</label>
 						<input id='email' type='email' name='email' required />
 					</div>
 					<div class='w-50'>
-						<label for='phone'>Phone*</label>
+            <label for='phone'>Phone Number*</label>
 						<input id='phone' type='tel' placeholder='Phone' name='Phone' required />
 					</div>
+          <div class='w-50'>
+            <label for='url'>URL</label>
+            <input id='url' type='text' name='URL'/>
+          </div>
+          <div class='w-50'>
+						<label for='hearOfUs' id="hearOfUs">How Did You Hear About Us?*</label>
+						<select class="min-arrow" name="hearOfUs" id="hearOfUsOptions" form="contact-us" required>
+              <option value="" selected></option>
+              <option value="GDBA Speaker Event">GDBA Speaker Event</option>
+              <option value="News Article">News Article</option>
+              <option value="Tradeshow/Industry Event">Tradeshow/Industry Event</option>
+              <option value="Read a Gavin de Becker Book">Read a Gavin de Becker Book</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Friend/Colleague Referred">Friend/Colleague Referred</option>
+              <option value="Former GDBA Employee Referred">Former GDBA Employee Referred</option>
+            </select>
+          </div>
+          <div class='w-50'>
+						<label for='bestTime'>Best Time to Contact You</label>
+						<input id='bestTime' type='text' name='Best Time to Contact You'/>
+					</div>
 					<div class='w-100'>
-						<label for='message'>Message*</label>
+						<label for='message'>Nature of Your Inquiry*</label>
 						<textarea id='message' name='Message' rows='10' required></textarea>
 					</div>
 					<input type='hidden' name='form-name' value='contact-us' />
@@ -46,8 +112,7 @@ import Hero from '../components/Hero.astro'
 		margin-bottom: 50px;
 		background: var(--accent);
 		padding: 50px;
-		width: 65%;
-		margin-left: auto;
+		width: 75%;
 	}
 	form {
 		display: flex;
@@ -60,7 +125,7 @@ import Hero from '../components/Hero.astro'
 		margin-right: auto;
 		margin-left: auto;
 	}
-	input {
+	input, select {
 		font-family: 'montserrat';
 		padding: 8px 10px;
 		margin: 5px;
@@ -69,6 +134,10 @@ import Hero from '../components/Hero.astro'
 		min-height: 50px;
 		width: 100%;
 	}
+  .new-service-list {
+    display: none;
+    margin-top: 10px;
+  }
 	.w-50 {
 		width: calc(50% - 25px);
 	}
@@ -106,6 +175,54 @@ import Hero from '../components/Hero.astro'
 	label {
 		padding: 5px 5px;
 	}
+
+select.min-arrow {
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select.min-arrow:focus {
+  background-image:
+    linear-gradient(45deg, #004980 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, #004980 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: #004980;
+  outline: 0;
+}
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+	@media (max-width: 1280px) {
+    .form {
+      width: calc(100% - 100px);
+    }
+	}
 	@media (max-width: 768px) {
     .heading {
       padding-left: 25px;
@@ -118,3 +235,19 @@ import Hero from '../components/Hero.astro'
 		}
 	}
 </style>
+<script>
+  let selectReason = document.querySelector('#reason');
+  let newServiceList = document.querySelector('.new-service-list');
+  let selectServices = document.querySelector('#services');
+  selectReason.addEventListener('change', () => {
+    if(selectReason.selectedIndex == 1) {
+      newServiceList.style.display = 'block';
+      selectServices.required = true;;
+    } else {
+      newServiceList.style.display = 'none';
+      selectServices.required = false;;
+    }
+  // result.innerText = selection.options[selection.selectedIndex].value;
+  console.log(selectReason.selectedIndex);
+  })  
+</script>
