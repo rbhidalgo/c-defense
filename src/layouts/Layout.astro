@@ -18,6 +18,15 @@ const { title, description } = Astro.props;
     <meta name="description" property="og:description" content={description} />
     <meta property="og:image" content="/img/og-image.jpg" />
 		<link rel="icon" type="/image/svg+xml" href="/favicon.svg" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J418P39KDL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-J418P39KDL');
+    </script>
 	</head>
 	<body>
     <Nav />
