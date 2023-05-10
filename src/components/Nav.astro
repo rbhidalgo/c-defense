@@ -1,8 +1,8 @@
 ---
 /** Main menu items */
-const textLinks: { label: string; href: string }[] = [
+const navItems: { label: string; href: string }[] = [
 	{ label: 'HOME', href: '/' },
-	// { label: 'SERVICES', href: '#' },
+	{ label: 'WHO WE ARE', href: '/who-we-are/' },
 	// { label: 'GUARDS', href: '#' },
 	{ label: 'CONTACT', href: '/contact/' },
 ];
@@ -21,7 +21,7 @@ const textLinks: { label: string; href: string }[] = [
 		<nav id="menu-content">
 			<ul class="nav-items">
 				{
-					textLinks.map(({ label, href }) => (
+					navItems.map(({ label, href }) => (
 						<li>
 							<a
 								aria-current={Astro.url.pathname === href}

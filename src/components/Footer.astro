@@ -1,0 +1,78 @@
+<footer class="fadeIn wrapped">
+ <div class="footer__container">
+  <div class="footer__col flex-col">
+   <a href="/"><img src="/img/logo.svg" alt="confidentaial defense agency logo" class="logo"></a>
+   <a href="/contact/" class="button">Contact Us</a>
+  </div>
+  <div class="footer__col">
+   <h2 class="heading-sm primary">SERVICES</h2>
+   <ul>
+    <li>Executive Protection</li>
+    <li>Estate Security</li>
+    <li>Event Security</li>
+    <li>Executive Transportation</li>
+    <li>Private Investigation & Security Consulting</li>
+    <li>Tactical Film Advising</li>
+   </ul>
+  </div>
+  <div class="footer__col">
+   <h2 class="heading-sm primary">STAY <br>CONNECTED</h2>
+   <div class="footer__socials">
+    <img src="/img/icon-fb.png" alt="facebook icon">
+    <img src="/img/icon-ig.png" alt="instagram icon">
+    <img src="/img/icon-tw.png" alt="twitter icon">
+    <img src="/img/icon-yt.png" alt="youtube icon">
+   </div>
+  </div>
+ </div>
+</footer>
+
+<style>
+ footer {
+  border-top: 5px solid #595c65;
+ }
+.footer__container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 100px;
+ padding-right: 100px;
+ padding-top: 50px;
+ padding-bottom: 50px;
+ max-width: 75%;
+}
+.flex-col {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-end;
+}
+.logo {
+ max-width: 400px;
+ margin-bottom: 25px;
+}
+.footer__socials {
+ display: flex;
+ gap: 10px;
+}
+.footer__socials img {
+ max-height: 25px;
+ max-width: 25px;
+}
+@media (max-width:1280px) {
+ .footer__container {
+   padding-left: 50px;
+   padding-right: 50px;
+  }
+}
+@media (max-width: 768px) {
+ .footer__container {
+  max-width: unset;
+  padding-left: 25px;
+  padding-right: 25px;
+  justify-content: flex-start;
+ }
+}
+</style>
