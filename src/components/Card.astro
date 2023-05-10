@@ -2,25 +2,38 @@
 export interface Props {
 	title: string;
 	body: Array<string>;
+	image: string;
 }
 
-const { title, body } = Astro.props;
+const { title, body, image } = Astro.props;
 ---
 
-<li class="card">
-		<h2 class="heading-sm">
-			{title}
-		</h2>
-		<p>
-			{body.map((item) => (
-				<p>{item}</p>
-			))}
-		</p>
-</li>
+<div class="card">
+		<div class="card__wrapper">
+			<div class="card__text">
+				<h2 class="heading-sm">
+					{title}
+				</h2>
+					{body.map((item) => (
+						<p>{item}</p>
+					))}
+			</div>
+				<img src={image} alt="service image">
+		</div>
+</div>
 <style>
 	.card {
-		flex: 1;
-		list-style: none;
+		flex: 0 1 calc(25% - 10px);
+	}
+	.card__wrapper {
+		height: 100%;
+		background: var(--accent);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.card__text {
+		padding: 20px;
 	}
 	@media (max-width:1280px) {
 		.card {
