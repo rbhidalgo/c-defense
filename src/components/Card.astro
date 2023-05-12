@@ -8,7 +8,7 @@ export interface Props {
 const { title, body, image } = Astro.props;
 ---
 
-<div class="card">
+<div class="card swiper-slide">
 		<div class="card__wrapper">
 			<div class="card__text">
 				<h2 class="heading-sm">
@@ -22,8 +22,11 @@ const { title, body, image } = Astro.props;
 		</div>
 </div>
 <style>
-	.card {
+	/* .card {
 		flex: 0 1 calc(25% - 10px);
+	} */
+	.card.swiper-slide {
+		height: unset!important;
 	}
 	.card__wrapper {
 		height: 100%;
@@ -34,10 +37,5 @@ const { title, body, image } = Astro.props;
 	}
 	.card__text {
 		padding: 20px;
-	}
-	@media (max-width:1280px) {
-		.card {
-			flex-basis: 100%;
-		}
 	}
 </style>

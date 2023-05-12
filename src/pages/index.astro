@@ -2,137 +2,197 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
 import Card from '../components/Card.astro'
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 ---
-
 <Layout title='Confidential Defense Agency - Our Shield Your Safeguard' description='Confidential Defense Agency'>
-	<main>
-		<Hero image='/img/hero.jpg' />
-		<section class='wrapped'>
-			<div class='container-flex'>
-				<div class='flex-45 fadeIn'>
-					<img src="/img/blue-city.jpg" alt="Los Angeles city photo" class="obj-img">
-				</div>
-				<div class='flex-55 fadeIn'>
-					<h2 class='heading'>ABOUT US</h2>
-					<p>Family-owned and operated since 2021, Confidential Defense Agency (CDA) is a private security firm based out of Los Angeles, CA with client services available globally. We offer custom-tailored security and luxury transport solutions with an emphasis on client privacy. We are a law enforcement family and take pride in our mission to safeguard our trusted clients and what they value most. Our security operators are vetted from tenured and distinguished backgrounds in U.S. law enforcement and military, possessing over 100 years of professional experience serving and protecting civilians.</p>
-					<p class="white"><strong>We hope to be of service to you, your family, and colleagues.</strong></p>
-				</div>
-			</div>
-		</section>
-		<section class="wrapped">
-			<div class='card__container'>
-				<div role='list' class='card__wrapper'>
-					<Card
-						title='EXECUTIVE PROTECTION'
-						body={[
-							'Our specially designed executive protection service provides 24/7 coverage for a single individual, family, and/or location with a small-scale, highly trained mobile security detail.',
-						]}
-						image="/img/services/exec-prot.jpg"
-					/>
-					<Card
-						title='ESTATE SECURITY'
-						body={['We design and staff residential security solutions to fit your unique needs. Our estate security operators protect your at-home peace of mind by monitoring residential detection systems, managing property access, deterring intrusions, and responding to emergencies.']}
-						image="/img/services/estate-security.jpg"
-					/>
-					
-					<Card
-						title='EVENT SECURITY'
-						body={[
-							'Specialized, full-spectrum security solutions for any size or type of event. Safeguard your event attendees and staff from potential threats.',
-						]}
-						image="/img/services/event-security.jpg"
-					/>
-					<Card
-						title='EXECUTIVE TRANSPORTATION'
-						body={[
-							'We offer luxury and defense transport solutions for high-profile and high-net-worth individuals.',
-						]}
-						image="/img/services/exect-transport.jpg"
-					/>
+  <main>
+      <Hero image='/img/hero.jpg' />
+      <section class='wrapped'>
+          <div class='container-flex'>
+              <div class='flex-45 fadeIn'>
+                  <img src="/img/blue-city.jpg" alt="Los Angeles city photo" class="obj-img">
+              </div>
+              <div class='flex-55 fadeIn'>
+                  <h2 class='heading'>ABOUT US</h2>
+                  <p>Family-owned and operated since 2021, Confidential Defense Agency (CDA) is a private security firm based out of Los Angeles, CA with client services available globally. We offer custom-tailored security and luxury transport solutions with an emphasis on client privacy. We are a law enforcement family and take pride in our mission to safeguard our trusted clients and what they value most. Our security operators are vetted from tenured and distinguished backgrounds in U.S. law enforcement and military, possessing over 100 years of professional experience serving and protecting civilians.</p>
+                  <p class="white"><strong>We hope to be of service to you, your family, and colleagues.</strong></p>
+              </div>
+          </div>
+      </section>
+      <section class="wrapped">
+          <div class='card__container fadeIn'>
 
-					<Card
-						title='PRIVATE INVESTIGATION & SECURITY CONSULTING '
-						body={[
-							'Our private investigators are off-duty law enforcement equipped with the precise skills and tools required to independently investigate client cases.',
-						]}
-						image="/img/services/private-inv.jpg"
-					/>
-					<Card
-						title='TACTICAL FILM ADVISING'
-						body={[
-							'Offering strategic, comprehensive advising for pre-production, script development, and set and costume design as it relates to real-world tactical policing procedure and crime scene management.',
-						]}
-						image="/img/services/tactical-film.jpg"
-					/>
-				</div>
-			</div>
-		</section>
-	</main>
+              <!-- Slider main container -->
+              <div class="swiper">
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper">
+                      <!-- Slides -->
+                      <Card title='EXECUTIVE PROTECTION' 
+                      body={[ 'Our specially designed executive protection service provides 24/7 coverage for a single individual, family, and/or location with a small-scale, highly trained mobile security detail.' , ]} 
+                      image="/img/services/exec-prot.jpg" />
+
+                      <Card title='ESTATE SECURITY' 
+                      body={['We design and staff residential security solutions to fit your unique needs. Our estate security operators protect your at-home peace of mind by monitoring residential detection systems, managing property access, deterring intrusions, and responding to emergencies.']} 
+                      image="/img/services/estate-security.jpg" />
+
+                      <Card title='EVENT SECURITY' 
+                      body={[ 'Specialized, full-spectrum security solutions for any size or type of event. Safeguard your event attendees and staff from potential threats.' , ]} 
+                      image="/img/services/event-security.jpg" />
+
+                      <Card title='EXECUTIVE TRANSPORTATION' 
+                      body={[ 'We offer luxury and defense transport solutions for high-profile and high-net-worth individuals.' , ]} 
+                      image="/img/services/exect-transport.jpg" />
+
+                      <Card title='PRIVATE INVESTIGATION & SECURITY CONSULTING ' 
+                      body={[ 'Our private investigators are off-duty law enforcement equipped with the precise skills and tools required to independently investigate client cases.' , ]} 
+                      image="/img/services/private-inv.jpg" />
+
+                      <Card title='TACTICAL FILM ADVISING' 
+                      body={[ 'Offering strategic, comprehensive advising for pre-production, script development, and set and costume design as it relates to real-world tactical policing procedure and crime scene management.' , ]} 
+                      image="/img/services/tactical-film.jpg" />
+                  </div>
+                  
+                  <!-- If we need navigation buttons -->
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                  
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+          </div>
+      </section>
+  </main>
 </Layout>
 
 <style>
-	.container-flex {
-		padding-right: 100px;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 50px;
-		margin-bottom: 50px;
+  	:root {
+    --swiper-theme-color: #29438d;
+    --swiper-pagination-bullet-width: 12px;
+    --swiper-pagination-bullet-height: 12px;
+    --swiper-pagination-bullet-inactive-color: #fff;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-navigation-color: #fff;
 	}
-	.flex-45 {
-		flex-basis: calc(45% - 25px);
-	}
-	.flex-55 {
-		flex-basis: calc(55% - 25px);
-	}
-	.card__container {
-		margin-bottom: 50px;
-	}
-	.card__wrapper {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
-	/* .card__wrapper {
-		flex: 0 1;
-		flex-basis: calc(33% - 25px);
-		display: flex;
-		flex-direction: column;
-		gap: 25px;
-		padding: 25px;
-	}
-	hr {
-		border-color: #595c65;
-		border-width: 2px;
-		border-style: solid;
-	} */
-	/* @media (max-width: 1400px) {
-		.card__wrapper {
-			flex-basis: 100%;
-		}
-		hr {
-			width: 90%;
-		}
-	} */
-	@media (max-width: 1280px) {
-		.container-flex {
-			padding-right: 50px;
-		}
-	}
-	@media (max-width: 768px) {
-		.container-flex {
-			padding-right: 0;
-			margin-bottom: 25px;
-			flex-direction: column-reverse;
-		}
-	}
-	@media (max-width: 600px) {
-		.flex-45 {
-			flex-basis: 100%;
-		}
-		.flex-55 {
-			flex-basis: 100%;
-			padding-right: 25px;
-			padding-left: 25px;
-		}
-	}
+  .container-flex {
+      padding-right: 100px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      margin-bottom: 50px;
+  }
+
+  .flex-45 {
+      flex-basis: calc(45% - 25px);
+  }
+
+  .flex-55 {
+      flex-basis: calc(55% - 25px);
+  }
+
+  .card__container {
+      margin-bottom: 100px;
+  }
+  .swiper-pagination {
+    margin-top: 50px;
+    position: relative;
+  }
+  .swiper-pagination-bullet {
+    background: #fff;
+    opacity: 1;
+  }
+  .swiper-button-next, .swiper-button-prev {
+    top: unset;
+    bottom: 0;
+    height: 53.8%;
+    /* background: #fff; */
+  }
+  /* .card__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+  } */
+
+  /* .card__wrapper {
+  flex: 0 1;
+  flex-basis: calc(33% - 25px);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
+}
+hr {
+  border-color: #595c65;
+  border-width: 2px;
+  border-style: solid;
+} */
+  /* @media (max-width: 1400px) {
+  .card__wrapper {
+    flex-basis: 100%;
+  }
+  hr {
+    width: 90%;
+  }
+} */
+  @media (max-width: 1280px) {
+      .container-flex {
+          padding-right: 50px;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .container-flex {
+          padding-right: 0;
+          margin-bottom: 25px;
+          flex-direction: column-reverse;
+      }
+      .card__container {
+        margin-bottom: 50px;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .flex-45 {
+          flex-basis: 100%;
+      }
+
+      .flex-55 {
+          flex-basis: 100%;
+          padding-right: 25px;
+          padding-left: 25px;
+      }
+  }
+  .swiper-slide {
+    height: unset!important;
+  }
 </style>
+<script>
+  import Swiper, { Navigation, Pagination } from 'swiper';
+  const swiper = new Swiper('.swiper', {
+  // configure Swiper to use modules
+  modules: [Navigation, Pagination],
+  slidesPerView: 1,
+  // loop: true,
+  spaceBetween: 25,
+  pagination: {
+    el: '.swiper-pagination',
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    640: {
+        spaceBetween: 10,
+        slidesPerView: 2,
+    },
+    1280: {
+      slidesPerView: 3,
+    },
+    1600: {
+      slidesPerView: 4,
+    },
+  },
+});
+</script>
