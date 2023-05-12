@@ -3,13 +3,14 @@ export interface Props {
 	title: string;
 	body: Array<string>;
 	image: string;
+	link: string;
 }
 
-const { title, body, image } = Astro.props;
+const { title, body, image, link } = Astro.props;
 ---
 
 <div class="card swiper-slide">
-		<div class="card__wrapper">
+		<a href={link} class="card__wrapper">
 			<div class="card__text">
 				<h2 class="heading-sm">
 					{title}
@@ -18,8 +19,10 @@ const { title, body, image } = Astro.props;
 						<p>{item}</p>
 					))}
 			</div>
+			<div class="card__img">
 				<img src={image} alt="service image">
-		</div>
+			</div>
+		</a>
 </div>
 <style>
 	/* .card {
@@ -37,5 +40,31 @@ const { title, body, image } = Astro.props;
 	}
 	.card__text {
 		padding: 20px;
+	}
+	.card__img img {
+		vertical-align: bottom;
+	}
+	.card__img {
+		position: relative;
+		overflow: hidden;
+	}
+	.card__img img {
+		transition: transform .4s ease;
+	}
+	.card__wrapper:hover .card__img::after {
+		transition: all .4s ease;
+	}
+	.card__wrapper:hover .card__img::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #29438d;
+		mix-blend-mode: screen;
+	}
+	.card__wrapper:hover img {
+		transform: scale(1.1);
 	}
 </style>
