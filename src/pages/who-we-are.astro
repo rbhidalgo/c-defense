@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Who We Are' description='Confidential Defense Agency was established as a small family run business in 2021.'>
+	<main>
+		<section class='wrapped bg-light'>
+   <div class="wm-logo__left">
+    <div class="wm-logo__img">
+     <img src="/img/cda-shield.png" alt="CDA shield logo icon" class="logo-icon fadeIn">
+    </div>
+       <div class="wm-logo__text fadeIn">
+     <h2 class='heading fadeIn white'>WHO WE ARE</h2>
+     <p class="fadeIn">Confidential Defense Agency was established as a small family run business in 2021. After 14 years of working side jobs in executive protection to provide extra financial support to his growing family, LA County Senior Gang Detective, Chase Saavedra, concluded that his 17 years of professional experience as a police officer offered more qualifying expertise in the field of security services than any executive protection company he had ever worked for. These companies often lacked leadership with any previous law-enforcement or military background, and he often found himself as the one consultant capable of drafting specialized protection plans for their clients. After observing the use of scare tactics to influence and overcharge clients first-hand, Chase decided he did not want to be part of a business culture capable of unfairly taking advantage of unsuspecting individuals. With the motivation and support of his wife, Jessica Saavedra, Chase founded CDA with a different mission in mind: to safeguard clients and protect what matters most to them, powered by a legitimate law enforcement and military network of experts and bounded by principles of trust and confidentiality. At CDA, our shield Is your safeguard. Find more about our services <a href="/services/">here</a>.</p>
+     <hr class="grey">
+     <div class="about-card__container">
+      <div class="about-card">
+       <div class="about-card__img">
+        <img src="/img/chase.jpg" alt="chase photo" class="obj-img">
+       </div>
+       <div class="about-card__text">
+         <div class="about-card__title">
+          <h2 class="heading-sm mb0">CHASE SAAVEDRA</h2>
+          <h3 class="heading-xs">PRESIDENT AND FOUNDER</h3>
+         </div>
+         <p class="body-sm">Chase Saavedra began his career as a police deputy in Los Angeles County in 2004. He earned specialized training in dignitary and executive protection and began work as an investigator in the narcotics and gang division. Seen as an approachable leader capable of adapting to diverse settings with a bias for action, Chase was awarded Officer of the Year 2005-2008. He became a field training officer in 2008 and Narcotics Detective in 2009, earning a position on a Federal Multi-Agency Task Force. He earned Officer of the Year 2009-2010 and continued work as a field training officer, working several dignitary protection details from 2011 onward. He became Deputy of the Year in 2015, earning the highest arrest rate for his station. He was also awarded the Medal of Valor in 2018 for having rendered life-saving medical aid to his partner who was shot in the line of duty. He was promoted to Senior Gang Detective in 2019 and continues work for the Federal Task Force. His work as a Senior Gang Detective keeps his skills of leadership, negotiation, and problem solving sharp and poised for continuing to develop and refine CDA into a top-rated private security firm. Outside of his work as a Detective and business owner, Chase is a proud father, husband, and coach. He enjoys taking yearly trips to Maui with his family, coaching his son's baseball team, and sharing Sunday dinner with the extended Saavedra clan.</p>
+       </div>
+      </div>
+      <div class="about-card">
+       <div class="about-card__img">
+        <img src="/img/jessica.jpg" alt="jessica photo" class="obj-img">
+       </div>
+       <div class="about-card__text">
+         <div class="about-card__title">
+          <h2 class="heading-sm mb0">JESSICA SAAVEDRA</h2>
+          <h3 class="heading-xs">CEO</h3>
+         </div>
+         <p class="body-sm">Jessica Saavedra is the owner and CEO of Confidential Defense Agency, a family-run, private security firm offering custom-tailored executive security and luxury transport solutions with an emphasis on client privacy. In addition to running the day to day of CDA, Jessica is also a proud LASD wife of 10 years and super mom to 3 energetic and dynamic kids. Before founding CDA with her husband in 2021, Jessica got her professional start in the mortgage industry. She worked her way up from a loan office receptionist to full-time as a self-employed brokerage partner where she acted as a loan officer and notary public to a growing network of valued clients in Los Angeles and Orange County. When Jessica isn’t busy growing CDA, you can find her rooting for her kids at their baseball or soccer game or volunteering at their school. In her true off-time, you’ll likely find Jessica painting, practicing yoga, or away on vacation with her family at their favorite retreat in Maui.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+		</section>
+	</main>
+</Layout>
+<style>
+ .mb0 {
+  margin-bottom: 0;
+ }
+ .bg-light {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-bottom: 100px;
+ }
+ hr.grey {
+  width: 100%;
+  border-style: none;
+  border-top: 5px solid #595c65;
+  margin-top: 25px;
+  margin-bottom: 25px;
+ }
+ .logo-icon {
+  position: sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 25px;
+ }
+ .wm-logo__left {
+  display: flex;
+  gap: 50px;
+ }
+ .wm-logo__img {
+  flex-basis: 10%;
+ }
+ .wm-logo__text {
+  flex-basis: 90%;
+ }
+ .about-card__container {
+  display: flex;
+  gap: 50px;
+ }
+ .about-card {
+  display: flex;
+  gap: 25px;
+  flex: 1;
+  flex-basis: 45%;
+ }
+ .about-card:first-child {
+  flex-basis: 55%;
+ }
+ .about-card__img {
+  flex-basis: 25%;
+ }
+ .about-card__text {
+  flex-basis: 75%;
+ }
+ .about-card__title {
+  background: var(--primary);
+  padding: 10px;
+  margin-bottom: 10px;
+ }
+ .heading-xs {
+  color: var(--white);
+  font-size: clamp(12px, 2vw, 14px);
+  line-height: 1.4;
+ }
+ @media (max-width: 2000px) {
+  .obj-img {
+   object-fit: contain;
+   object-position: top;
+  }
+  .about-card {
+   flex-basis: 50%!important;
+  }
+ }
+ @media (max-width: 1280px) {
+  .about-card__container {
+   flex-wrap: wrap;
+  }
+  .about-card {
+   flex-basis: 100%!important;
+  }
+ }
+ @media (max-width: 768px) {
+  .about-card {
+   flex-direction: column;
+  }
+  .bg-light {
+   padding-right: 25px;
+   padding-left: 25px;
+  }
+  .logo-icon {
+   display: none;
+  }
+  .wm-logo__left {
+   display: block;
+  }
+ }
+
+</style>
