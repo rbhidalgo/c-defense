@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import profiles from '../data/profiles'
+import Layout from '../layouts/Layout.astro';
+import ProfilesData from '../components/Profiles';
 
 ---
 
@@ -9,88 +9,12 @@ import profiles from '../data/profiles'
         <section class='wrapped'>
           <span class="reverse-order"><h2>Reverse Order</h2></span>
           <div class="profile-container">
-            {profiles.map((profile, index) => (
-              <div class="profile-card__wrapper" data-show-profile>
-                <div class="profile-card__img"><img src={profile.image} alt="" class="obj-img"></div>
-                <div class="profile-card__name"><h2 class="heading-sm">{profile.firstName} {profile.lastName}</h2></div>
-                <div class="profile-card__data">
-                  <div class="profile-card__data-name">
-                    <h2>{profile.firstName} <br/>{profile.lastName}</h2>
-                    <span class="close-btn">X</span>
-                    </div>
-                  <h2>{profile.tier}</h2>
-                  <p>{profile.height}</p>
-                  <p>{profile.weight}</p>
-                  <p>{profile.age}</p>
-                  <p>{profile.race}</p>
-                  <p>{profile.languages}</p>
-                  <p>{profile.certifications}</p>
-                  <p>{profile.specialSkills}</p>
-                </div>
-              </div>
-            ))}
+            <ProfilesData client:load/>
           </div>
         </section>
     </main>
 </Layout>
-<style>
-.profile-container {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-}
-.profile-card__wrapper {
-  flex-basis: calc((100% / 5) - 50px);
-  cursor: pointer;
-}
-.profile-card__wrapper:hover .profile-card__img::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #29438d;
-    mix-blend-mode: screen;
-	}
-.profile-card__img {
-  margin-bottom: 20px;
-  position: relative;
-}
-.profile-card__img img{
-  vertical-align: middle;
-}
-.heading-sm {
-  text-align: center;
-  font-size: clamp(14px, 2vw, 18px);
-}
-.profile-card__data {
-  display: none;
-}
-.show-profile .profile-card__data {
-  display: block;
-}
-@media (max-width: 768px) {
-.profile-card__wrapper {
-  flex-basis: calc((100% / 3) - 50px);
-  cursor: pointer;
-}
-}
-
-@media (max-width: 600px) {
-.profile-card__wrapper {
-  flex-basis: calc((100% / 2) - 50px);
-  cursor: pointer;
-}
-}
-</style>
-<script>
+<!-- <script>
   import profiles from '../data/profiles'
   profiles.sort((a, b) => {
     const nameA = a.lastName;
@@ -110,4 +34,4 @@ import profiles from '../data/profiles'
   profilesData.forEach((profile) => {
     profile.addEventListener('click', e => console.log(e.target))
   })
-</script>
+</script> -->
