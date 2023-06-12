@@ -44,16 +44,19 @@ const Profiles = () => {
             <h2 className="heading white mb0">{cardData.firstName} <br />{cardData.lastName}</h2>
             <span className="close-btn" onClick={displayCard}><img src="/img/icon-close.png" alt="" /></span>
           </div>
-            <h2>TIER {cardData.tier}</h2>
-            <p><span className="white">Height:</span> {cardData.height}</p>
-            <p><span className="white">Weight:</span> {cardData.weight}</p>
-            <p><span className="white">Age:</span> {cardData.age}</p>
-            <p><span className="white">Ethnicity:</span> {cardData.race}</p>
-            <p><span className="white">Languages:</span> {cardData.languages}</p>
-            <p><span className="white">Certifications:</span> {cardData.certifications}</p>
-            <p><span className="white">Special Skills:</span> {cardData.specialSkills}</p>
+            {cardData.tier != null ? <h2 className="profile-card__data-tier">TIER {cardData.tier}</h2> : null}
+            {cardData.height != null ? <p><span className="white">Height:</span> {cardData.height.toString().includes(".") ? cardData.height.toString().replace(".", "ft ") + 'in' : cardData.height.toString() + "ft"}</p> : null}
+            {cardData.weight != null ? <p><span className="white">Weight:</span> {cardData.weight.toString() + "lbs"}</p> : null}
+            {cardData.age != null ? <p><span className="white">Age:</span> {cardData.age}</p> : null}
+            {cardData.hireDate != null ? <p><span className="white">Hire Date:</span> {cardData.hireDate}</p> : null}
+            {cardData.race != null ? <p><span className="white">Ethnicity:</span> {cardData.race}</p> : null}
+            {cardData.languages != null ? <p><span className="white">Languages:</span> {cardData.languages}</p> : null}
+            {cardData.certifications != null ? <p><span className="white">Certifications:</span> {cardData.certifications.join(', ')}</p> : null}
+            {cardData.specialSkills != null ? <ul className="profile-card__data-skills">{cardData.specialSkills.map((skill, i) => (
+              <li key={skill}><span className="white">Special Skill {i+1}:</span> {skill}</li>
+            ))}</ul> : null}
             <h2 className="heading white">BIO</h2>
-            <div class="profile-card__data-bio">
+            <div className="profile-card__data-bio">
               <p>{cardData.bio}</p>
               <div className="profile-card__data-icon"><img src="/img/cda-shield.png" alt="CDA shield logo icon"/></div>
             </div>
