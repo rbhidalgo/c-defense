@@ -246,7 +246,7 @@ label {
     display: block;
     margin-bottom: 50px;
     filter: brightness(0) saturate(100%);
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .print-wrapper {
@@ -256,15 +256,15 @@ label {
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
-    min-width: 800px;
-    max-width: 800px;
+    /* min-width: 800px; */
+    max-width: 95%;
 }
 
 .profile-card-print__wrapper .profile-card-data > *,
 .profile-card-print__wrapper .profile-card-data .heading-sm {
     font-family: Arial, Helvetica, sans-serif !important;
     color: #000!important;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .profile-card-print__wrapper.archived {
@@ -272,14 +272,19 @@ label {
 }
 
 .profile-card-print__wrapper {
-    width: 700px;
+    /* width: 1000px; */
     /* width: calc((100% / 3) - 50px); */
-    /* border: 1px solid #000; */
+    border-bottom: 1px solid #8a8a8a;
     display: flex;
     flex-direction: row;
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+.profile-card-print__wrapper .heading-sm{
+   text-align: left;
   }
 .profile-card-print__wrapper .profile-card-data {
-    padding: 16px;
+    /* padding: 16px; */
   }
 
 .profile-card-print__wrapper .profile-card-data ul li{
@@ -294,6 +299,9 @@ label {
     max-width: 150px;
     width: unset;
     height: unset;
+  }
+  .profile-card-print__img.exportChecked img{
+    display: none;
   }
 
   .profile-card-data {
@@ -313,14 +321,14 @@ label {
     /* bottom: -840%; */
     /* transform: translateY(-50%); */
     /* left: 0; */
-    padding: 10px;
+    /* padding: 10px; */
     /* height: 200px;
     max-height: 200px;
     overflow: hidden; */
   }
 
   .profile-card-data-wrapped > * {
-    display: inline-block;
+    /* display: inline-block; */
     font-size: 12px;
   }
   /* Sidebar Filter */
@@ -329,7 +337,8 @@ label {
     display: flex;
     flex-direction: column;
     align-items: start;
-    max-width: 25%;
+    /* width: 100%; */
+    /* max-width: 25%; */
     margin-left: auto;
     /* height: auto; */
     position: absolute;
@@ -406,13 +415,67 @@ label {
   padding-bottom: 15px;
 }
 .search-bar {
-  width: 80%;
+  width: 100%;
   display: flex;
   background-color: var(--primary);
 }
 .search-bar img {
   padding: 5px;
-  max-width: 30px;
+  max-width: 40px;
+  object-fit: contain;
+}
+.pdf-down {
+  /* padding-right: 10px; */
+  background: unset;
+  border: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+}
+.pdf-down__tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--primary);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  top: 0;
+  right: 105%;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.pdf-down__tooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%; /* To the right of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--primary);
+}
+.pdf-down:hover .pdf-down__tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.pdf-down img {
+  padding: 5px;
+  max-width: 40px;
+  object-fit: contain;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+.pdf-export {
+  padding: 20px;
+  border-width: 0;
+  cursor: pointer;
+  background: var(--primary);
+  font-size: clamp(12px, 3vw, 15px);
+  width: 100%;
 }
 .search-bar input {
   color: #ffffff;
@@ -423,6 +486,34 @@ label {
 .sorting-options {
     display: flex;
     flex-direction: column;
+}
+
+.exportChecked {
+  display: none;
+}
+
+.filter-sidebar__container {
+  display: flex;
+}
+.export-wrapper {
+  background-color: #93959c;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  /* transform: translateX(100%); */
+}
+.export-wrapper .checkbox-wrapper {
+  color: #fff;
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+.export-wrapper.open {
+  height: auto;
+  overflow: visible;
+  visibility: visible;
 }
 
 @media (max-width: 1024px) {
@@ -461,16 +552,32 @@ label {
       height: 100%; /* Use 100% here to support printing more than a single page*/
       margin: 0 !important;
       padding: 0 !important;
+      min-height: 1056px;
+      background-color: #fff;
       /* overflow: hidden; */
     }
     .print-container {
 		visibility: visible;
-        display: block;
-	}
+    display: block;
+    page-break-inside: avoid;
+	  }
+    .print-wrapper {
+      page-break-inside: avoid;
+    }
+    .print-container__logo {
+      position: fixed;
+      top: 0;
+      right: 50px;
+    }
+    @page {
+      margin-top: 50px; /* Custom margin for printed page */
+      margin-bottom: 50px; /* Custom margin for printed page */
+    }
   }
 
-  .header__nav {
-    max-width: 75%;
+  .header__nav .nav-items {
+    /* max-width: 75%; */
+    padding-right: 25%;
   }
 
   .table-users {
