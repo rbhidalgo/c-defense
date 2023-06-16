@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
-import profilesData from '../data/profiles';
+import profilesData from '../data/profiles.js';
 import '../styles/allprofiles.css';
 
 const AllProfiles = () => {
