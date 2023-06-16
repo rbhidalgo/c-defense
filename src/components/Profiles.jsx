@@ -49,67 +49,6 @@ const Profiles = () => {
 		tierDescending: useRef(null),
 	}
 
-	// const [progressState, setProgressState] = useState('')
-
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!isSidebarOpen);
-  // };
-
-	// const createPDF = () => {
-	// 	// setProgressState('Working...');
-	// 	// if(!document.getElementById('pdf')) {
-	// 	//   setPrintCards(true)
-	// 	// }
-
-	// 	// Choose the element that our invoice is rendered in.
-	// 	const element = document.getElementById('pdf')
-
-	// 	// clone the element
-	// 	var clonedElement = element.cloneNode(true)
-
-	// 	// change display of cloned element
-	// 	clonedElement.style.display = 'block'
-
-	// 	// Choose the clonedElement and save the PDF for our user.
-	// 	// html2pdf(clonedElement);
-
-	// 	// remove cloned element
-	// 	// clonedElement.remove();
-
-	// 	// const element = document.getElementById('pdf');
-	// 	const options = {
-	// 		margin: [0, 0, 0, 0], // Adjust the margin as per your requirement
-	// 		filename: 'profiles.pdf',
-	// 		image: { type: 'jpeg', quality: 0.98 },
-	// 		html2canvas: { scale: 1.5 }, // Adjust the scale as per your requirement
-	// 		jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' },
-	// 	}
-	// 	// html2pdf().from(clonedElement).set(options).save();
-	// 	html2pdf()
-	// 		.from(clonedElement)
-	// 		.set(options)
-	// 		.toContainer()
-	// 		.toCanvas()
-	// 		.toImg()
-	// 		.toPdf()
-	// 		.save()
-	// 		.then(
-	// 			function (pdf) {
-	// 				//Success here
-	// 				setProgressState('Downloaded')
-	// 			},
-	// 			function () {
-	// 				//Error Here
-	// 				setProgressState('Error Try Again...')
-	// 			}
-	// 		)
-	// 	// html2pdf().from(element).set(options).save();
-	// 	// setProgressState('Done');
-	// 	// setPrintCards(false)
-	// 	clonedElement.remove()
-	// }
-
-	// Update the handleCheckboxChange function to handle checkbox selection
 	const handleCheckboxChange = event => {
 		const { name } = event.target
 		setSelectedSortOption(name)
@@ -126,29 +65,11 @@ const Profiles = () => {
     }
   };
 
-  // const toggleOptions = containerId => {
-  //   setExpandedContainer(prevExpandedContainer => {
-  //     if (prevExpandedContainer === 'refine' && prevExpandedContainer !== containerId) {
-  //       return 'refine'; // Keep the "refine" container open if another container is clicked
-  //     } else {
-  //       return prevExpandedContainer === containerId ? null : containerId;
-  //     }
-  //   });
-  // }
 
 	function displayCard(data) {
 		setCardData(data)
 		setCard(!card)
 	}
-
-	// useEffect(() => {
-	// 	if (!card) {
-	// 		document.querySelector('html').classList.remove('active-card')
-	// 	}
-	// 	return () => {
-	// 		document.querySelector('html').classList.add('active-card')
-	// 	}
-	// })
 
   useEffect(() => {
     const exportWrapperElement = exportWrapperRef.current;
@@ -285,11 +206,6 @@ const Profiles = () => {
 		setProfileData(filteredData)
 	}
 
-	// function tierCompare(a, b) {
-	// 	const tierOrder = { I: 1, II: 2, III: 3 }
-	// 	return tierOrder[a] - tierOrder[b]
-	// }
-
   function tierCompare(a, b) {
     const tierOrder = { I: 1, II: 2, III: 3 };
   
@@ -349,7 +265,6 @@ const Profiles = () => {
                         <img src="/img/icon-search.png" alt="" />
                         <input type='text' value={searchQuery} onChange={handleSearchChange} />
                         </div>
-              {/* <button onClick={createPDF}>{progressState || 'Export to PDF'}</button> */}
                       <button className="pdf-down" onClick={toggleSidebar}><span className="pdf-down__tooltip">EXPORT TO PDF</span><img src="/img/icon-pdf.png" alt="" /></button>
             </div>
             <div className='filter-sidebar_options'>
@@ -945,58 +860,6 @@ const Profiles = () => {
 										</div>
 									</div>
 								</div>
-
-   
-                  // <table cellspacing="0">
-                  //   <tr>
-                  //       {data?.tier != null && <th>TIER</th>}
-								  //       {data?.height != null && <th>Height</th>}
-								  //       {data?.weight != null && <th>Weight</th>}
-								  //       {data?.age != null && <th>Age</th>}
-								  //       {data?.phoneNumber != null && <th>Phone</th>}
-								  //       {data?.email != null && <th>Email</th>}
-								  //       {data?.hireDate != null && <th>Hire Date</th>}
-								  //       {data?.race != null && <th>Ethnicity</th>}
-								  //       {data?.languages != null && <th>Languages</th>}
-								  //       {cardData?.passport != null && <th>Passport</th>}
-								  //       {cardData?.education != null && <th>Education</th>}
-								  //       {cardData?.travel != null && <th>Travel</th>}
-								  //       {data?.certifications != null && <th>Certifications</th>}
-                  //       {data?.specialSkills != null && <th>Skills</th>}
-									// 		  {data?.bio && <th>BIO</th>}
-                  //   </tr>
-
-                  //   <tr className={'profile-card-print__tr' + `${hideArchive && data.archived ? ' archived' : ''}`} key={data?.lastName}>
-                  //       <td><img src={data?.image} alt="" /></td>
-                  //       <td>{data?.firstName} {data?.lastName}</td>
-                  //       {data?.tier != null && <td>{data?.tier}</td>}
-								  //       {data?.height != null && <td>{data?.height} ft</td>}
-								  //       {data?.weight != null && <td>{data?.weight} lbs</td>}
-								  //       {data?.age != null && <td>{data?.age}</td>}
-								  //       {data?.phoneNumber != null && <td>{data?.phoneNumber}</td>}
-								  //       {data?.email != null && <td>{data?.email}</td>}
-								  //       {data?.hireDate != null && <td>{data?.hireDate}</td>}
-								  //       {data?.race != null && <td>{data?.race}</td>}
-								  //       {data?.languages != null && <td>{data?.languages}</td>}
-								  //       {cardData?.passport != null && <td>{cardData?.passport}</td>}
-								  //       {cardData?.education != null && <td>{cardData?.education}</td>}
-								  //       {cardData?.travel != null && <td>{cardData?.travel}</td>}
-								  //       {data?.certifications != null && <td>{data?.certifications.join(', ')}</td>}
-                  //       {data?.specialSkills != null && (
-									// 			<td>
-                  //         <ul>
-									// 				{data?.specialSkills.map((skill, i) => (
-									// 					<li key={skill}>
-									// 						{skill}
-									// 					</li>
-									// 				))}
-                  //         </ul>
-									// 			</td>
-									// 		)}
-									// 		{data?.bio && <td>{data?.bio}</td>}
-                  //   </tr>
-
-                  // </table>
 
 							))}
 						</div>
