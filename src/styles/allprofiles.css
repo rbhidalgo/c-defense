@@ -283,17 +283,12 @@ label {
 .profile-card-print__wrapper .heading-sm{
    text-align: left;
   }
-.profile-card-print__wrapper .profile-card-data {
-    /* padding: 16px; */
-  }
 
 .profile-card-print__wrapper .profile-card-data ul li{
     margin-bottom: 10px;
   }
 
-  .profile-card-print__img{
-    /* max-height: 150px; */
-  }
+
   .profile-card-print__img img{
     display: inline-block;
     max-width: 150px;
@@ -373,9 +368,7 @@ label {
     background: var(--primary);
     z-index: -1;
   } */
-  .filter-sidebar_options, .sorting-container {
-    /* padding: 20px; */
-  }
+
   .active-card .filter-sidebar {
     opacity: 0;
   }

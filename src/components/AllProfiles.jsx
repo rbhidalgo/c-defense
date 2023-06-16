@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import profilesData from '../data/profiles.js';
 import '../styles/allprofiles.css';
@@ -249,23 +249,19 @@ export default function AllProfiles() {
   const isWeightChecked = checkedOptions['WEIGHT'];
 
 	return (
-		<>
+		<div>
 			<div className='filter-sidebar'>
 				<div className={`heading-sm refine-heading ${openFilters ? 'expanded' : ''}`} onClick={toggleFilters}>
 					REFINE
 				</div>
 				<div className="filter-sidebar__container">
-          <div className={`refine-wrapper`} ref={filterRef} style={{
-              maxHeight: openFilters ? filterRef.current?.scrollHeight + 100 : 0,
-                      paddingBottom:  openFilters ? '75px' : 0,
-            }}
-          >
+          <div className={`refine-wrapper`} ref={filterRef} style={{maxHeight: openFilters ? filterRef.current?.scrollHeight + 100 : 0,paddingBottom: openFilters ? '75px' : 0}}>
             <div className='filter-sidebar__search-download'>
               <div className="search-bar">
-                        <img src="/img/icon-search.png" alt="" />
+                        <img src="../img/icon-search.png" alt="" />
                         <input type='text' value={searchQuery} onChange={handleSearchChange} />
                         </div>
-                      <button className="pdf-down" onClick={toggleSidebar}><span className="pdf-down__tooltip">EXPORT TO PDF</span><img src="/img/icon-pdf.png" alt="" /></button>
+                      <button className="pdf-down" onClick={toggleSidebar}><span className="pdf-down__tooltip">EXPORT TO PDF</span><img src="../img/icon-pdf.png" alt="" /></button>
             </div>
             <div className='filter-sidebar_options'>
               <form onSubmit={handleSubmit}>
@@ -275,11 +271,9 @@ export default function AllProfiles() {
                     ACTIVE-DUTY EXPERIENCE
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.activeDuty}
-                    style={{
-                      maxHeight: expandedContainer === 'active-duty' ? optionsRefs.activeDuty.current?.scrollHeight : 0,
-                    }}
+                    style={{maxHeight: expandedContainer === 'active-duty' ? optionsRefs.activeDuty.current?.scrollHeight : 0}}
                   >
                     <div className="checkbox-wrapper">
                               <input type='checkbox' id='lawEnforcement' name='activeDuty' value='LAW ENFORCEMENT' />
@@ -314,11 +308,9 @@ export default function AllProfiles() {
                     CERTIFICATIONS
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.certifications}
-                    style={{
-                      maxHeight: expandedContainer === 'certifications' ? optionsRefs.certifications.current?.scrollHeight : 0,
-                    }}
+                    style={{maxHeight: expandedContainer === 'certifications' ? optionsRefs.certifications.current?.scrollHeight : 0}}
                   >
                     <div className="checkbox-wrapper">
                             <input type='checkbox' id='AED' name='AED' value='AED' />
@@ -375,12 +367,9 @@ export default function AllProfiles() {
                     HEIGHT
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.height}
-                    style={{
-                      maxHeight: expandedContainer === 'height' ? optionsRefs.height.current?.scrollHeight : 0,
-                    }}
-                  >
+                    style={{maxHeight: expandedContainer === 'height' ? optionsRefs.height.current?.scrollHeight : 0}}>
                     <div className="checkbox-wrapper">
                             <input type='checkbox' id='average' name='average' value='average' />
                     <label htmlFor='average'>5'9" AND BELOW</label>
@@ -395,7 +384,7 @@ export default function AllProfiles() {
                             </div>
                   </div>
                 </div>
-                <div className={`selection__container ${expandedContainer === 'language' ? 'is-open' : ''}`}>
+                <div className={`selection__container + ${expandedContainer === 'language' ? 'is-open' : ''}`}>
                   <p
                     className={`${expandedContainer === 'language' ? 'expanded' : ''}`}
                     onClick={() => toggleOptions('language')}
@@ -403,7 +392,7 @@ export default function AllProfiles() {
                     LANGUAGE(S) SPOKEN (OTHER THAN ENGLISH)
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.language}
                     style={{maxHeight: expandedContainer === 'language' ? optionsRefs.language.current?.scrollHeight : 0,}}
                   > 
@@ -418,7 +407,7 @@ export default function AllProfiles() {
                     LOCATION
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.location}
                     style={{
                       maxHeight: expandedContainer === 'location' ? optionsRefs.location.current?.scrollHeight : 0,
@@ -451,7 +440,7 @@ export default function AllProfiles() {
                     PASSPORT
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.passport}
                     style={{
                       maxHeight: expandedContainer === 'passport' ? optionsRefs.passport.current?.scrollHeight : 0,
@@ -476,7 +465,7 @@ export default function AllProfiles() {
                     POST-SECONDARY EDUCATION
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.education}
                     style={{
                       maxHeight: expandedContainer === 'education' ? optionsRefs.education.current?.scrollHeight : 0,
@@ -500,7 +489,7 @@ export default function AllProfiles() {
                     RACE
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.race}
                     style={{
                       maxHeight: expandedContainer === 'race' ? optionsRefs.race.current?.scrollHeight : 0,
@@ -536,7 +525,7 @@ export default function AllProfiles() {
                     TIER
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.tier}
                     style={{
                       maxHeight: expandedContainer === 'tier' ? optionsRefs.tier.current?.scrollHeight : 0,
@@ -561,12 +550,9 @@ export default function AllProfiles() {
                     WEIGHT
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.weight}
-                    style={{
-                      maxHeight: expandedContainer === 'weight' ? optionsRefs.weight.current?.scrollHeight : 0,
-                    }}
-                  >
+                    style={{maxHeight: expandedContainer === 'weight' ? optionsRefs.weight.current?.scrollHeight : 0}}>
                     <div className="checkbox-wrapper">
                             <input type='checkbox' id='175' name='175' value='175' />
                     <label htmlFor='175'>&lt;175 LBS</label>
@@ -598,12 +584,9 @@ export default function AllProfiles() {
                     WILLING TO TRAVEL
                   </p>
                   <div
-                    className={`selection__options`}
+                    className="selection__options"
                     ref={optionsRefs.travel}
-                    style={{
-                      maxHeight: expandedContainer === 'travel' ? optionsRefs.travel.current?.scrollHeight : 0,
-                    }}
-                  >
+                    style={{maxHeight: expandedContainer === 'travel' ? optionsRefs.travel.current?.scrollHeight : 0}}>
                     <div className="checkbox-wrapper">
                             <input type='checkbox' id='NO-TRAVEL' name='NO-TRAVEL' value='NO-TRAVEL' />
                     <label htmlFor='NO-TRAVEL'>NO</label>
@@ -619,7 +602,7 @@ export default function AllProfiles() {
                   </div>
                 </div>
                 <div className="selection__buttons">
-                          <button type='reset' onClick={resetProfileData}><img src="/img/icon-reset.png" alt="" /></button>
+                          <button type='reset' onClick={resetProfileData}><img src="../img/icon-reset.png" alt="" /></button>
                           <button type='submit' className='heading'>SUBMIT</button>
                         </div>
               </form>
@@ -764,10 +747,8 @@ export default function AllProfiles() {
               </div>
             ))}
             <ReactToPrint
-              removeAfterPrint
               trigger={() => <button className="pdf-export heading-sm">EXPORT TO PDF</button>}
-              content={() => printRef.current
-              }
+              content={() => printRef.current}
             />
           </div>
         </div>
@@ -819,9 +800,9 @@ export default function AllProfiles() {
 
 				{/* Render Printed Profile Cards */}
 				{printCards && (
-					<div className='print-container' id='pdf' ref={printRef}>
+					<div className='print-container' ref={printRef}>
 						<div className='print-container__logo'>
-							<img src='/img/logo-bw.svg' alt='confidentaial defense agency logo' style={{ maxHeight: '50px' }} />
+							<img src='../img/logo-bw.svg' alt='confidentaial defense agency logo' style={{ maxHeight: '50px' }} />
 						</div>
 						<div className='print-wrapper'>
 							{profileData.map((data, i) => (
@@ -879,7 +860,7 @@ export default function AllProfiles() {
 										{cardData.lastName}
 									</h2>
 									<span className='close-btn' onClick={displayCard}>
-										<img src='/img/icon-close.png' alt='' />
+										<img src='../img/icon-close.png' alt='' />
 									</span>
 								</div>
 								{cardData.tier != null && <h2 className='profile-card__data-tier'>TIER {cardData.tier}</h2>}
@@ -937,7 +918,7 @@ export default function AllProfiles() {
 								<div className='profile-card__data-bio'>
 									<p>{cardData.bio}</p>
 									<div className='profile-card__data-icon'>
-										<img src='/img/cda-shield.png' alt='CDA shield logo icon' />
+										<img src='../img/cda-shield.png' alt='CDA shield logo icon' />
 									</div>
 								</div>
 							</div>
@@ -945,6 +926,6 @@ export default function AllProfiles() {
 					</div>
 				)}
 			</div>
-		</>
+		</div>
 	);
-}
+};
