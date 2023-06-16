@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
-import profilesData from '../data/profiles'
-import './profiles.css'
+import profilesData from '../data/profiles';
+import './profiles.css';
 
 const Profiles = () => {
 	const [card, setCard] = useState(false)
