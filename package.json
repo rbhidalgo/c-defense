@@ -14,9 +14,9 @@
     "@types/react": "^18.2.11",
     "@types/react-dom": "^18.2.4",
     "astro": "^2.0.18",
-    "html2pdf.js": "^0.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-to-print": "^2.14.13",
     "swiper": "^9.3.1"
   }
 }
