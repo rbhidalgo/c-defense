@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ProfilesData from '../components/Profiles';
+import AllProfiles from '../components/Profiles';
 
 ---
 
 <Layout title='Profiles' description='Confidential Defense Agency was established as a small family run business in 2021.'>
     <main>
         <section class='wrapped'>
-            <ProfilesData client:load/>
+            <AllProfiles client:load/>
         </section>
     </main>
 </Layout>
