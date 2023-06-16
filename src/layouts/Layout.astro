@@ -16,18 +16,17 @@ const { title, description } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-    <meta name="description" property="og:description" content={description} />
-    <meta property="og:image" content="/img/og-image.jpg" />
+        <meta name="description" property="og:description" content={description} />
+        <meta property="og:image" content="/img/og-image.jpg" />
 		<link rel="icon" type="/image/svg+xml" href="/favicon.svg" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J418P39KDL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-J418P39KDL');
-    </script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-J418P39KDL"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-J418P39KDL');
+        </script>
 	</head>
 	<body>
     <Nav />
@@ -36,7 +35,6 @@ const { title, description } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	
   @font-face {
     font-family: 'agencyfb-regular-extended';
     src: url('/fonts/agencyfb-regularextended.woff2') format('woff2'),
@@ -70,8 +68,8 @@ const { title, description } = Astro.props;
     font-display: swap;
 	}
 	:root {
-		--font-heading: 'agencyfb-boldextended';
-		--primary: #29438d;
+	--font-heading: 'agencyfb-boldextended';
+	--primary: #29438d;
     --accent: #313339;
     --white: #ffffff;
 	}
@@ -149,6 +147,9 @@ const { title, description } = Astro.props;
   .primary {
     color: var(--primary);
   }
+  .mb0 {
+  margin-bottom: 0;
+ }
   .button {
     font-family: var(--font-heading);
     font-weight: normal;
@@ -175,6 +176,9 @@ const { title, description } = Astro.props;
   .bg-light {
     background: #313339;
   }
+  .profile-card__data-name {
+    background: var(--primary);
+  }
   .body-sm {
     letter-spacing: -0.02em;
   }
@@ -183,7 +187,6 @@ const { title, description } = Astro.props;
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       const currentIndex = Array.from(hiddenEl).indexOf(entry.target)
-      console.log(currentIndex)
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
         entry.target.style.transitionDelay = `${currentIndex * .1}s`;
