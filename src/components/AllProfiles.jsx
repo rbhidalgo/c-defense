@@ -3,7 +3,7 @@ import ReactToPrint from 'react-to-print';
 import profilesData from '../data/profiles.js';
 import '../styles/allprofiles.css';
 
-const AllProfiles = () => {
+export default function AllProfiles() {
 	const [card, setCard] = useState(false)
 	const [cardData, setCardData] = useState(null)
 	const [profileData, setProfileData] = useState(profilesData)
@@ -946,7 +946,5 @@ const AllProfiles = () => {
 				)}
 			</div>
 		</>
-	)
+	);
 }
-
-export default AllProfiles
