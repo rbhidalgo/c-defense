@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import profilesData from '../data/profiles';
-import './allprofiles.css';
+import '../styles/allprofiles.css';
 
 const AllProfiles = () => {
 	const [card, setCard] = useState(false)
