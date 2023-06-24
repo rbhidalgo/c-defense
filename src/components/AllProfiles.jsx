@@ -180,13 +180,14 @@ export default function AllProfiles() {
 		} else {
 			sethideArchive(true)
 		}
+    setOpenFilters(!openFilters);
 	}
 
 	const resetProfileData = () => {
 		setProfileData(profilesData)
 		setSortBy('')
 		setSelectedSortOption('')
-    setSearchQuery('')
+        setSearchQuery('')
 	}
 
 	const handleSearchChange = e => {
@@ -247,6 +248,22 @@ export default function AllProfiles() {
   const isNameChecked = checkedOptions['NAME'];
   const isPhoneNumberChecked = checkedOptions['PHONE NUMBER'];
   const isWeightChecked = checkedOptions['WEIGHT'];
+
+  const calculateAge = (birthday) => {
+    const birthdate = new Date(birthday);
+    const currentDate = new Date();
+    let age = currentDate.getFullYear() - birthdate.getFullYear();
+
+    // Check if the birthday hasn't occurred yet this year
+    if (currentDate.getMonth() < birthdate.getMonth() ||
+      (currentDate.getMonth() === birthdate.getMonth() &&
+        currentDate.getDate() < birthdate.getDate())) {
+        console.log(age + " -1");
+        // no birthday yet, subtract -1 from this years birthdate
+        return age - 1;
+    }
+    return age;
+  };
 
 	return (
 		<div>
@@ -879,7 +896,7 @@ export default function AllProfiles() {
 								)}
 								{cardData.age != null && (
 									<p>
-										<span className='white'>Age:</span> {cardData.age}
+										<span className='white'>Age:</span> {calculateAge(cardData.age)}
 									</p>
 								)}
 								{cardData.hireDate != null && (
