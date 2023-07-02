@@ -108,11 +108,6 @@ export default function AllProfiles() {
 			}
 		}
 
-		// if (checkedValues.length === 0) {
-		//   // No values selected, handle accordingly
-		//   return;
-		// }
-
 		let filteredData = profilesData.filter(item => {
 			let isMatch = true
 
@@ -181,13 +176,15 @@ export default function AllProfiles() {
 			sethideArchive(true)
 		}
     setOpenFilters(!openFilters);
+    isSidebarOpen ? setSidebarOpen(!isSidebarOpen) : null;
 	}
 
 	const resetProfileData = () => {
 		setProfileData(profilesData)
 		setSortBy('')
 		setSelectedSortOption('')
-        setSearchQuery('')
+    setSearchQuery('')
+    setSidebarOpen(!isSidebarOpen);
 	}
 
 	const handleSearchChange = e => {
@@ -258,7 +255,6 @@ export default function AllProfiles() {
     if (currentDate.getMonth() < birthdate.getMonth() ||
       (currentDate.getMonth() === birthdate.getMonth() &&
         currentDate.getDate() < birthdate.getDate())) {
-        console.log(age + " -1");
         // no birthday yet, subtract -1 from this years birthdate
         return age - 1;
     }
@@ -271,7 +267,7 @@ export default function AllProfiles() {
 				<div className={`heading-sm refine-heading ${openFilters ? 'expanded' : ''}`} onClick={toggleFilters}>
 					REFINE
 				</div>
-				<div className="filter-sidebar__container">
+				<div className={`filter-sidebar__container ${openFilters ? 'expanded' : ''}`}>
           <div className={`refine-wrapper`} ref={filterRef} style={{maxHeight: openFilters ? filterRef.current?.scrollHeight + 100 : 0,paddingBottom: openFilters ? '75px' : 0}}>
             <div className='filter-sidebar__search-download'>
               <div className="search-bar">
@@ -310,9 +306,8 @@ export default function AllProfiles() {
                             </div>
                   </div>
                 </div>
-                <div className='selection__container no-cursor'>
+                <div className='selection__container archived'>
                   <label htmlFor='archived'>
-                    {' '}
                     ARCHIVED
                   </label>
                   <input type='checkbox' defaultChecked={false} ref={checkboxRef} id='archived' name='archived' value='archived' />
@@ -779,9 +774,9 @@ export default function AllProfiles() {
 							case 'NAME-ASCENDING':
 								return a.lastName.localeCompare(b.lastName)
 							case 'AGE-ASCENDING':
-								return a.age - b.age
+								return new Date(b.age) - new Date(a.age)
 							case 'AGE-DESCENDING':
-								return b.age - a.age
+								return new Date(a.age) - new Date(b.age)
 							case 'HEIGHT-TALLEST':
 								return b.height - a.height
 							case 'HEIGHT-SHORTEST':
@@ -808,7 +803,7 @@ export default function AllProfiles() {
 								<img src={data?.image} alt='' className='obj-img' />
 							</div>
 							<div className='profile-card__name'>
-								<h2 className='heading-sm'>
+								<h2 className='heading-xs'>
 									{data?.firstName} {data?.lastName}
 								</h2>
 							</div>
@@ -819,42 +814,38 @@ export default function AllProfiles() {
 				{printCards && (
 					<div className='print-container' ref={printRef}>
 						<div className='print-container__logo'>
-							<img src='../img/logo-bw.svg' alt='confidentaial defense agency logo' style={{ maxHeight: '50px' }} />
+							<img src='../img/logo.svg' alt='confidentaial defense agency logo'/>
 						</div>
 						<div className='print-wrapper'>
 							{profileData.map((data, i) => (
 								<div className={'profile-card-print__wrapper' + `${hideArchive && data.archived ? ' archived' : ''}`} key={data?.lastName}>
-									<div className={'profile-card-print__img' + `${isHeadshotChecked ? ' exportChecked' : ''}`}>
+									<div className={'profile-card-print__img' + `${isHeadshotChecked ? ' exportChecked' : ' export'}`}>
 										<img src={data?.image} alt='' />
 									</div>
 									<div className='profile-card-data'>
 										<div className='profile-card-data-wrapped'>
-											<h2 className={'heading-sm' + `${isNameChecked ? 'exportChecked' : ''}`}>
+											<h2 className={'heading-sm print-title ' + `${isNameChecked ? 'exportChecked' : 'export'}`}>
 												{data?.firstName} {data?.lastName}
 											</h2>
 											{data?.tier != null && <p>TIER {data?.tier}</p>}
-											{data?.height != null && <p className={isHeightChecked ? 'exportChecked' : ''}>Height: {data?.height} ft</p>}
-											{data?.weight != null && <p className={isWeightChecked ? 'exportChecked' : ''}>Weight: {data?.weight} lbs</p>}
-											{data?.age != null && <p className={isAgeChecked ? 'exportChecked' : ''}>Age: {data?.age}</p>}
-											{data?.phoneNumber != null && <p className={isPhoneNumberChecked ? 'exportChecked' : ''}>Phone Number: {data?.phoneNumber}</p>}
-											{data?.email != null && <p>Email: {data?.email}</p>}
-											{data?.hireDate != null && <p>Hire Date: {data?.hireDate}</p>}
-											{data?.race != null && <p>Ethnicity: {data?.race}</p>}
-											{data?.languages != null && <p>Languages: {data?.languages}</p>}
-											{cardData?.passport != null && <p>Passport: {cardData?.passport}</p>}
-											{cardData?.education != null && <p>Education: {cardData?.education}</p>}
-											{cardData?.travel != null && <p>Travel: {cardData?.travel}</p>}
-											{data?.certifications != null && <p>Certifications: {data?.certifications.join(', ')}</p>}
-											{data?.specialSkills != null && (
-												<ul>
-													{data?.specialSkills.map((skill, i) => (
-														<li key={skill}>
-															Special Skill {i + 1}: {skill}
-														</li>
-													))}
-												</ul>
-											)}
-											{data?.bio && <p className={isBioChecked ? 'exportChecked' : ''}>BIO: {data?.bio}</p>}
+											<div className="profile-card-data__info-wrapper">
+                        <div className="profile-card-data-info">
+                          {data?.height != null && <p className={isHeightChecked ? 'exportChecked' : 'export'}><span>Height:</span> {data?.height}ft</p>}
+                          {data?.weight != null && <p className={isWeightChecked ? 'exportChecked' : 'export'}><span>Weight:</span> {data?.weight}lbs</p>}
+                          {data?.age != null && <p className={isAgeChecked ? 'exportChecked' : 'export'}><span>Age:</span> {calculateAge(data.age)}</p>}
+                          {data?.phoneNumber != null && <p className={isPhoneNumberChecked ? 'exportChecked' : 'export'}><span>Phone Number:</span> {data?.phoneNumber}</p>}
+                          {data?.email != null && <p><span>Email:</span> {data?.email}</p>}
+                          {data?.hireDate != null && <p><span>Hire Date:</span> {data?.hireDate}</p>}
+                          {data?.race != null && <p><span>Ethnicity:</span> {data?.race}</p>}
+                          {data?.languages != null && <p><span>Languages:</span> {data?.languages}</p>}
+                          {cardData?.passport != null && <p><span>Passport:</span> {cardData?.passport}</p>}
+                          {cardData?.education != null && <p><span>Education:</span> {cardData?.education}</p>}
+                          {cardData?.travel != null && <p><span>Travel:</span> {cardData?.travel}</p>}
+                          {data?.certifications != null && <p><span>Certifications:</span> {data?.certifications.join(', ')}</p>}
+                          {data?.specialSkills != null && <p><span>Special Skills:</span> {data?.specialSkills.join(', ')}</p>}
+                        </div>
+                        {data?.bio && <p className={isBioChecked ? 'exportChecked' : 'export'}><span className="heading-sm heading-bio white">BIO</span> <br/>{data?.bio}</p>}
+                      </div>
 										</div>
 									</div>
 								</div>
@@ -880,64 +871,59 @@ export default function AllProfiles() {
 										<img src='../img/icon-close.png' alt='' />
 									</span>
 								</div>
-								{cardData.tier != null && <h2 className='profile-card__data-tier'>TIER {cardData.tier}</h2>}
-								{cardData.height != null && (
-									<p>
-										<span className='white'>Height:</span>{' '}
-										{cardData.height.toString().includes('.')
-											? cardData.height.toString().replace('.', 'ft ') + 'in'
-											: cardData.height.toString() + 'ft'}
-									</p>
-								)}
-								{cardData.weight != null && (
-									<p>
-										<span className='white'>Weight:</span> {cardData.weight.toString() + 'lbs'}
-									</p>
-								)}
-								{cardData.age != null && (
-									<p>
-										<span className='white'>Age:</span> {calculateAge(cardData.age)}
-									</p>
-								)}
-								{cardData.hireDate != null && (
-									<p>
-										<span className='white'>Hire Date:</span> {cardData.hireDate}
-									</p>
-								)}
-								{cardData.race != null && (
-									<p>
-										<span className='white'>Ethnicity:</span> {cardData.race}
-									</p>
-								)}
-								{cardData.languages != null && (
-									<p>
-										<span className='white'>Languages:</span> {cardData.languages}
-									</p>
-								)}
-								{cardData.certifications != null && (
-									<p>
-										<span className='white'>Certifications:</span> {cardData.certifications.join(', ')}
-									</p>
-								)}
-								{cardData.specialSkills != null && (
-									<>
-										{/* <h2 className='heading white'>Special Skills</h2> */}
-										<ul className='profile-card__data-skills'>
-											{cardData.specialSkills.map((skill, i) => (
-												<li key={skill}>
-													<span className='white'>Special Skill {i + 1}:</span> {skill}
-												</li>
-											))}
-										</ul>
-									</>
-								)}
-								<h2 className='heading white'>BIO</h2>
-								<div className='profile-card__data-bio'>
-									<p>{cardData.bio}</p>
-									<div className='profile-card__data-icon'>
-										<img src='../img/cda-shield.png' alt='CDA shield logo icon' />
-									</div>
-								</div>
+								<div className="profile-card__data-info">
+                  {cardData.tier != null && <h2 className='profile-card__data-tier'>TIER {cardData.tier}</h2>}
+                  {cardData.height != null && (
+                    <p>
+                      <span className='white'>Height: </span>
+                      {cardData.height.toString().includes('.')
+                        ? cardData.height.toString().replace('.', 'ft ') + 'in'
+                        : cardData.height.toString() + 'ft'}
+                    </p>
+                  )}
+                  {cardData.weight != null && (
+                    <p>
+                      <span className='white'>Weight:</span> {cardData.weight.toString() + 'lbs'}
+                    </p>
+                  )}
+                  {cardData.age != null && (
+                    <p>
+                      <span className='white'>Age:</span> {calculateAge(cardData.age)}
+                    </p>
+                  )}
+                  {cardData.hireDate != null && (
+                    <p>
+                      <span className='white'>Hire Date:</span> {cardData.hireDate}
+                    </p>
+                  )}
+                  {cardData.race != null && (
+                    <p>
+                      <span className='white'>Ethnicity:</span> {cardData.race}
+                    </p>
+                  )}
+                  {cardData.languages != null && (
+                    <p>
+                      <span className='white'>Languages:</span> {cardData.languages}
+                    </p>
+                  )}
+                  {cardData.certifications != null && (
+                    <p>
+                      <span className='white'>Certifications:</span> {cardData.certifications.join(', ')}
+                    </p>
+                  )}
+                  {cardData.specialSkills != null && (
+                                    <p>
+                                      <span className='white'>Special Skills: </span> {cardData.specialSkills.join(', ')}
+                                    </p>
+                  )}
+                  <h2 className='heading profile-card__data-bio-title'>BIO</h2>
+                  <div className='profile-card__data-bio'>
+                    <p>{cardData.bio}</p>
+                    <div className='profile-card__data-icon'>
+                      <img src='../img/cda-shield.png' alt='CDA shield logo icon' />
+                    </div>
+                  </div>
+                </div>
 							</div>
 						</div>
 					</div>
