@@ -676,6 +676,10 @@ label {
         padding: 0 !important;
         min-height: 1056px;
         background-color: #fff;
+        overflow: visible;
+    }
+    .header, .filter-sidebar, .profile-card__wrapper, footer {
+      display: none;
     }
     .print-container {
         height: auto;
