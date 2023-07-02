@@ -16,6 +16,7 @@ export default function AllProfiles() {
   const [openFilters, setOpenFilters] = useState(false)
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const exportWrapperRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
 
 	const checkboxRef = useRef(null)
 	const filterRef = useRef(null)
@@ -74,21 +75,35 @@ export default function AllProfiles() {
   useEffect(() => {
     const exportWrapperElement = exportWrapperRef.current;
     const sidebarElement = exportWrapperElement.parentElement.parentElement;
-  
+
+    const sidebarWidth = exportWrapperElement.offsetWidth;
     if (isSidebarOpen) {
-      const sidebarWidth = exportWrapperElement.offsetWidth;
       sidebarElement.style.transform = `translateX(0)`;
     } else {
-      const sidebarWidth = exportWrapperElement.offsetWidth;
       sidebarElement.style.transform = `translateX(${sidebarWidth}px)`;
     }
   
     if (!card) {
       document.querySelector('html').classList.remove('active-card');
     }
+
+    const updateHeaderHeight = () => {
+      const header = document.querySelector('.header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+      }
+    };
+
+     // Call the function on initial load
+    updateHeaderHeight();
+
+     // Call the function on window resize
+    window.addEventListener('resize', updateHeaderHeight);
   
     return () => {
       document.querySelector('html').classList.add('active-card');
+      window.removeEventListener('resize', updateHeaderHeight);
     };
   }, [isSidebarOpen, card]);
 
